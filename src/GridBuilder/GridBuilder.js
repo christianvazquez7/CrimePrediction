@@ -7,7 +7,7 @@
  * Module imports
  */
 var Converter = require('./Converter.js');
-var Geozone = require('./Geozone.js');
+var Geozone = require('./GeoZone.js');
 var GridPoint = require('./GridPoint.js');
 
 module.exports = function GridBuilder (log) {

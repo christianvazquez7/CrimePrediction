@@ -1,4 +1,4 @@
-var GeozoneManager 	= require('./GeozoneManager.js');
+var GeozoneManager 	= require('./GeoZoneManager.js');
 var Log = require('log');
 var mongodb = require('mongodb');
 var coordinate 	= require('./GeoCoordinate.js');

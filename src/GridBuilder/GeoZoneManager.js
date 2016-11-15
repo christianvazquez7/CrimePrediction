@@ -6,8 +6,8 @@
 /**
  * Module imports
  */
-var Classifier 	= require('./GeozoneClassifier.js');
-var GeozoneStorage 	= require('./GeozoneStorage.js');
+var Classifier 	= require('./GeoZoneClassifier.js');
+var GeozoneStorage 	= require('./GeoZoneStorage.js');
 var GridBuilder = require('./GridBuilder.js');
 
 module.exports = function GeozoneManager (pgClient, mongoClient, finish_callback, log) {

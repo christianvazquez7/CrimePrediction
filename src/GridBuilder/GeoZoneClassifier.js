@@ -10,7 +10,7 @@ var GeoCoordinate = require('./GeoCoordinate.js');
 var DataClassificationStorage = require('./DataClassificationStorage.js');
 var MongoManager = require('./MongoManager.js');
 var Strategy = require('./ClassificationStrategy.js');
-var Geozone = require('./Geozone.js');
+var Geozone = require('./GeoZone.js');
 
 /**
  * @Constructor get the list of crime with the marshall
