@@ -2,10 +2,10 @@ var Log = require('log');
 var mongodb = require('mongodb');
 var coordinate 	= require('./GeoCoordinate.js');
 var fs 	= require('fs');
-var log = new Log('debug', fs.createWriteStream(new Date().getTime().toString() + '.log'));
+var log = new Log('debug', fs.createWriteStream('log/mapping-crime-' + new Date().getTime().toString() + '.log'));
 
 var mClient;
-var NoSQLconnection = "mongodb://localhost:27017/Geozone";
+var NoSQLconnection = "mongodb://localhost:27017/Geozone3";
 var mongoClient = mongodb.MongoClient;
 
 
@@ -23,14 +23,14 @@ mongoClient.connect(NoSQLconnection, function (err, db) {
     	var csv = require("fast-csv");
 
     	var csvStream = csv.createWriteStream({headers: true}),
-   		writableStream = fs.createWriteStream("RobberyNYC-Mapped.csv");
+   		writableStream = fs.createWriteStream("../../data/RobberyGeozone3.csv");
 
 		writableStream.on("finish", function(){
 		  console.log("done Writing!");
 		});
 		csvStream.pipe(writableStream);
 
-		csv.fromPath("RobberyNYC.csv")
+		csv.fromPath("../../data/RobberyNYC.csv")
 		.on("data", function(data){
 			//console.log(data);
 			location = new coordinate(Number(data[7]),Number(data[8]));

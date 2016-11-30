@@ -7,7 +7,7 @@ var fs 	= require('fs');
 
 var log = new Log('debug', fs.createWriteStream('log/grid-build-'+new Date().getTime().toString() + '.log'));
 var mClient;
-var NoSQLconnection = "mongodb://localhost:27017/Geozone";
+var NoSQLconnection = "mongodb://localhost:27017/Geozone3";
 var mongoClient = mongodb.MongoClient;
 
 
@@ -33,7 +33,7 @@ mongoClient.connect(NoSQLconnection, function (err, db) {
     	console.log('MongoDB Database Connected');
     	mClient = db;
     	var geo = new GeozoneManager(null, mClient, onStorageComplete, log);
-    	geo.buildGrid(new coordinate(40.908845, -74.178499), new coordinate(40.581020, -73.693281),40000,onGridComplete);
+    	geo.buildGrid(new coordinate(40.764649, -73.983307), new coordinate(40.653262, -73.792419),60000,onGridComplete);
 	}
 
 
