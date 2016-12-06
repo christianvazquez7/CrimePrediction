@@ -16,7 +16,7 @@ from sklearn.preprocessing import StandardScaler
 def baseline_model():
 	# create model
 	model = Sequential()
-	model.add(Dense(32, input_dim=7, init='normal', activation='relu'))
+	model.add(Dense(32, input_dim=12, init='normal', activation='relu'))
 	model.add(Dense(16, init='normal', activation='relu'))
 	model.add(Dense(1, init='normal'))
 	# Compile model
@@ -27,8 +27,8 @@ def baseline_model():
 
 
 
-filename = "../../data/balanced/2006.csv"
-zeroes = "../../data/balanced/zeros2006.csv"
+filename = "../../data/small2006.csv"
+zeroes = "../../data/zsmall2006.csv"
 dataset = np.loadtxt(fname = filename, delimiter = ',')
 dataset2 = np.loadtxt(fname = zeroes, delimiter = ',')
 
@@ -36,8 +36,8 @@ dataset2 = np.loadtxt(fname = zeroes, delimiter = ',')
 dta =  np.concatenate((dataset,dataset2))
 np.random.shuffle(dta)
 
-X = dta[:,0:7]
-y = dta[:,9]
+X = dta[:,0:12]
+y = dta[:,12]
 
 
 
@@ -58,8 +58,8 @@ model = baseline_model()
 
 
 
-validationFileName = "../../data/balanced/2007.csv"
-zeroValidation = "../../data/balanced/zeros2007.csv"
+validationFileName = "../../data/small2007.csv"
+zeroValidation = "../../data/zsmall2007.csv"
 
 d1 = np.loadtxt(fname = validationFileName, delimiter = ',')
 d2 = np.loadtxt(fname = zeroValidation, delimiter = ',')
@@ -67,15 +67,16 @@ d2 = np.loadtxt(fname = zeroValidation, delimiter = ',')
 d3 = np.concatenate((d1,d2))
 np.random.shuffle(d3)
 
-x_test = d3[:,0:7]
-y_test = d3[:,9]
+x_test = d3[:,0:12]
+y_test = d3[:,12]
 X_test = scalerX.transform(x_test)
 
 
-model.fit(X, y, verbose=1, nb_epoch=6)
+model.fit(X, y, verbose=1, nb_epoch=25)
 
 #print X[0]
 print model.predict(X_test[0:30,:])
+print y_test[0:30]
 
 score = model.evaluate(X_test, y_test)
 print score
