@@ -1,0 +1,127 @@
+package KYA;
+
+// Telemetry
+message Telemetry {
+    
+    //Heartbeat
+    message HeartRate {
+
+        //Measurement before user being notified
+        required int32 before = 1;
+        
+        //Measurement after user being notified
+        required int32 after = 2;
+    }
+    
+    //Survey
+    message Survey {
+        //Risk calculated by KYA
+        required int32 actualRisk = 1;
+
+        //Risk perceived by the user
+        required int32 perceivedRisk = 2;
+    }
+
+    //Identifier of the device where the telemetry was captured
+    required  string  userID  = 1;                 
+    
+    //Identifier of a notification
+    required  string  notificationID = 2;     
+     
+    // Zone where the record was captured or obtained
+    required  int32  zoneID = 3;     
+    
+    //Heart rate mesaurement record that may come in a telemetry record
+    optional  HeartRate  heartRate  = 4;
+    
+    //Survey response record that may come in a telemetry record
+    optional  Survey  survey = 5;
+}
+
+// Contains a latitude and longitude that represents a location in space. 
+message GeoPoint {
+    
+    //Identifier of the device where the telemetry was captured (optional as 
+    //it is only required when working with telemtry)
+    required string userID = 1;
+
+    // Latitude coordinate in physical space.
+    required double latitude = 2;
+
+    // Longitude coordinate in physical space.
+    required double longitude = 3;
+}
+
+// Message sent by the wear device to check in. This message is sent periodically
+// from the client device, to check if the wearable device has moved in a positive
+// risk gradient.
+message CheckIn {
+    
+    // Unique Id for the wearable device. This could either be registered or use
+    // a particular serial value unique to the physical device.
+    required string userId = 1;
+
+    // Location of wearable device at the time of checkin. This has two purposes
+    // (1) to check for changes between areas that the user traverses and (2) to 
+    // track user mobility for telemetry purposes.
+    required GeoPoint location = 2;
+
+    // Speed at which user is moving. This can be used to determine the what is 
+    // the most efficient request interval, along with the user distance from 
+    // the closest risk zone increase.
+    required double speed = 3;
+
+    // A flag to identify if the user is expecting notifications to be triggered
+    // when he/she moves from a higer risk zone to a lower risk zone.
+    required bool negDelta = 4;
+}
+
+      
+message CheckInResponse {
+
+    // New risk zone level classification in which the user is currently in.
+    required GeoZone currentZone = 1;
+
+    // Next suggested time delta for check in.
+    required double nextRequestTimeInSeconds = 2;
+
+    // True if feedback should be requested from user. False otherwise.
+    required bool requestFeedback = 3;
+}  
+
+message GeoZone {
+
+    // Identifier of a zone
+    required int32 zoneID = 1;
+
+    // Risk zone classification for this particular area. This number will be
+    // between 1 and 10. 
+    required int32 level = 2;
+
+    // Crime rate for this particular GeoZone, for statistical purposes. This
+    // information can be included as part of info in admin dashboard detail.
+    required string totalCrime = 3;
+
+    // Boundaries of the classified zone. This will always contain exactly 
+    // four GeoPoints.
+    repeated GeoPoint boundaries = 4;
+}
+
+// Contains the bounds of a grid
+message GridBounds {
+    
+    // LatLng of the north-west corner
+    repeated GeoPoint boundaries = 1;
+}
+
+// Stats
+message Stats {
+    required double maxNumOfCrimes = 1;
+    required double minNumOfCrimes = 2;
+    required double crimeAverage = 3;
+}
+
+// Threshold
+message Threshold {
+    required double threshold = 1;
+}
