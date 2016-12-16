@@ -1,0 +1,24 @@
+Related Work
+
+As our work includes both building a predictive model and creating a user-facing application, work that is relevant to our paper includes both academic research and actual technologies implemented by law enforcement.
+
+\subsection{Academic Research}
+
+Current research surrounding crime prediction using machine learning techniques focus on two main areas: prediction of crime by time and location and by individual or groups. The latter is especially relevant for questions surrounding recidivism: estimating the likelihood of an individual to be a repeat criminal offender. Furthermore, this focus can help detect patterns of crimes among individuals and groups. This paradigm was explored in Wang et al's paper \cite{wang_crime}, which proposed a pattern detection algorithm to help determine which crimes may have been committed by the same individuals or groups. However, as our paper seeks to predict crime by location, research focusing on spatial prediction is more relevant. 
+
+Recent research has utilized data capturing human footfall and density within urban areas. Bogomolov et al \cite{bogomolov} worked with anonymized human behavioral data from mobile network activity along with demographic data to predict crime by location. Otherwise known as the Smartsteps dataset, the mobile network activity data captured certain demographics and the purpose (e.g. working, visiting) of people as they moved between locations in London. They used a decision tree classifier based on Random Forest to build the model, finding that human behavioral data from mobile phone activity drastically improved the prediction accuracy. Traunmueller et al. \cite{traunmueller} has also used mobile phone data to capture footfall by location and time of day, examining different theories of urban crime.
+
+Other papers have used kernel density methods with strong results. Chainey et al \cite{chainey_hotspot} used hotspot mapping to predict spatial patterns of crime: burglary, street crime, theft from vehicles and theft of vehicles. Among their methods, kernel density estimation consistently outperformed all other mapping techniques to predict where crime would occur. Matthew Gerber \cite{gerber} has worked on predicting crime with Twitter, incorporating linguistic analysis into a kernel density crime prediction model.
+
+Examining crimes for ambient populations is also of interest to researchers. A recent paper by Malleson and Andresen \cite{malleson} sought to capture the complexity of how crime impacts different types of people. They use spatio-temporal cluster hunting techniques, incorporating mobile and Twitter data, to identify crime hotspots that are significant for the ambient population. Similarly, new research published in October 2016 by Kazumasa Hanaoka also focus on the ambient population through mobile phone data. Research based in Japan found crime patterns to change temporally and based on population density within a certain area. This population is of particular interest to our paper, as the application is intended for use by such groups.
+
+Tayebi and Glasser \cite{tayebi} also recently published a book, Social Network Analysis in Predictive Policing, which uses social network analysis in predictive policing. For example, examining co-offending networks of people who have committed crimes together, relying heavily on this concept to predict crime.
+
+A recent paper by Lepri et al. \cite{lepri} has focused on the unintended social consequences of using data for social good, including for predicting criminal behavior and crime hotspots as examined literature. They point out problems with indirect discrimination, privacy, etc in such algorithms, similar to many of the concerns our paper raises.
+
+Almanie et al \cite{almanie} also focus on finding hotspots of crime by time and location, using Decision Tree and Naive Bayesian classifiers to predict potential crime types. 
+
+
+
+
+
