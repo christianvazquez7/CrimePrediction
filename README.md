@@ -4,4 +4,4 @@ Neural network model for crime prediction in NYC.
 
 ### Visualization
 
-Visit [kya.media.mit.edu](kya.media.mit.edu)
+Visit [kya.media.mit.edu](http://kya.media.mit.edu)
